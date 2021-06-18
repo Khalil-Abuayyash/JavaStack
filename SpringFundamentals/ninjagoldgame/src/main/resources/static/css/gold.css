@@ -1,0 +1,22 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	width: 970px;
+	margin: 0 auto;
+}
+
+#forms {
+	display: flex;
+}
+
+form {
+	width: fit-content;
+	padding: 5px;
+}
+
+form > * {
+	margin-bottom: 5px; 
+}
