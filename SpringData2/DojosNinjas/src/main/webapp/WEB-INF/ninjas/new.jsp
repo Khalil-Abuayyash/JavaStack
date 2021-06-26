@@ -17,7 +17,7 @@
             Dojo:
             <form:select path="dojo">
                 <c:forEach items="${dojos}" var="d">
-                    <form:option value="${d}">
+                    <form:option value="${d.id}">
                         ${d.name} Location
                     </form:option>
                 </c:forEach>

@@ -37,6 +37,7 @@ public class NinjaController {
 	
 	@PostMapping("")
 	public String createNinja(@Valid @ModelAttribute("ninja")Ninja ninja, BindingResult result) {
+		System.out.println(ninja.getDojo());
 		if(result.hasErrors()) {
 			return "/ninjas/new.jsp";
 		}
