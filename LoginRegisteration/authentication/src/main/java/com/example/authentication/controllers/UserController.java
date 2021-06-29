@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.authentication.models.User;
 import com.example.authentication.services.UserService;
+import com.example.authentication.validators.UserValidator;
 
 @Controller
 public class UserController {
 	private final UserService userService;
+	private final UserValidator userValidator;
     
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserValidator userValidator) {
         this.userService = userService;
+        this.userValidator = userValidator;
     }
     
     @RequestMapping("/registration")
@@ -34,7 +37,7 @@ public class UserController {
     
     @RequestMapping(value="/registration", method=RequestMethod.POST)
     public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session) {
-        // if result has errors, return the registration page (don't worry about validations just now)
+        userValidator.validate(user, result);
     	if (result.hasErrors()) {
     		return "registrationPage.jsp";
     	}
